@@ -1,3 +1,9 @@
 package com.example.reposearch
 
-data class Repository(val name: String?, val readMeInfo: String , val forks: Int?, val stars: Int?)
+data class RepositoryInfo(val open_issues: Int, val forks_count: Int){
+
+
+    override fun toString(): String {
+        return "issues:  ${open_issues}, forks: $forks_count"
+    }
+}
