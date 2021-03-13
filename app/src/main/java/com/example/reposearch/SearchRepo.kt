@@ -10,6 +10,6 @@ interface SearchRepo {
     @GET("/search/repositories")
     suspend fun searchRepositories(@Query("q") name: String) : Response<SearchResult>
     @GET("/repos/{owner}/{repo}/readme")
-    suspend fun getRepoReadme(@Path("owner") owner: String, @Path("repo") name: String) : Response<ReadmeInfo>
+    suspend fun getRepoReadme(@Path("owner") owner_name: String, @Path("repo") name: String) : Response<ReadmeInfo>
 
 }
