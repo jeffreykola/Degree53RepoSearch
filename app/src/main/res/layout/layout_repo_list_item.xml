@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
-        android:background="#2ECC71"
+        android:background="@color/cardview_dark_background"
         android:padding="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +25,7 @@
             android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.875"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -32,7 +33,7 @@
                 android:id="@+id/repo_name_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/cardview_light_background"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/repo_forks_header"
@@ -44,7 +45,7 @@
                 android:id="@+id/repo_forks_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/cardview_light_background"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/repo_stars_header"
@@ -56,7 +57,7 @@
                 android:id="@+id/repo_stars_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/cardview_light_background"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -68,7 +69,7 @@
                 android:id="@+id/repo_forks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
+                android:textColor="@color/cardview_light_background"
                 android:textSize="14sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -82,7 +83,7 @@
                 android:id="@+id/repo_stars"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
+                android:textColor="@color/cardview_light_background"
                 android:textSize="14sp"
 
                 android:textStyle="normal"
@@ -97,7 +98,7 @@
                 android:id="@+id/repo_name_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
+                android:textColor="@color/cardview_light_background"
                 android:textSize="14sp"
 
                 android:textStyle="normal"
