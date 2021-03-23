@@ -5,4 +5,8 @@
     <string name="action_search">Search for repository</string>
     <string name="search_hint">Search repo..</string>
     <string name="search_hint_frag">Use search bar to find a repository....</string>
+    <string name="more">More</string>
+    <string name="stars_header">Stars</string>
+    <string name="forks_header">Forks</string>
+    <string name="name_header">Name</string>
 </resources>

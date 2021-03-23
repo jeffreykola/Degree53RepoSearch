@@ -38,10 +38,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         .add(KotlinJsonAdapterFactory())
         .build()
 
-//    val adapter = moshi.adapter<Any>(Object::class.java)
-
-
-
 
     val retrofit: SearchRepo = Retrofit.Builder()
             .baseUrl("https://api.github.com/")
@@ -98,7 +94,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         val fragmentTransaction: FragmentTransaction =  fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.defaultFragment, resultsFragment)
         fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit()
+        fragmentTransaction.commitAllowingStateLoss()
     }
 
 
