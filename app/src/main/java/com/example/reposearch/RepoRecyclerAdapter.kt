@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.layout_repo_list_item.view.*
 
-class RepoRecyclerAdapter(private val listener:Item): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RepoRecyclerAdapter(): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var items: List<Item> = ArrayList()
 
     fun setListItems(items: List<Item>){
@@ -27,7 +27,6 @@ class RepoRecyclerAdapter(private val listener:Item): RecyclerView.Adapter<Recyc
            is RepoViewHolder ->{
                val item = items.get(position)
                holder.bind(item)
-               holder.more_info.setOnClickListener {listener(holder.more_info)}
            }
        }
     }
