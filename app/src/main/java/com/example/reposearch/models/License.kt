@@ -1,4 +1,4 @@
-package com.example.reposearch
+package com.example.reposearch.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

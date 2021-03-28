@@ -1,6 +1,7 @@
 package com.example.reposearch
 
-import retrofit2.Call
+import com.example.reposearch.models.ReadmeInfo
+import com.example.reposearch.models.SearchResult
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
