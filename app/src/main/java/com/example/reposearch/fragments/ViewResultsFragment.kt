@@ -1,19 +1,14 @@
 package com.example.reposearch
 
 import android.os.Bundle
-import android.os.Parcelable
-import android.provider.Settings
-import android.util.Log
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.reposearch.adapter.RepoRecyclerAdapter
 import com.example.reposearch.controller.ApiHandler
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.example.reposearch.fragments.ReadmeDisplayFragment
 import com.example.reposearch.models.Item
 import com.example.reposearch.models.ReadmeInfo
@@ -32,8 +27,10 @@ class ViewResultsFragment : Fragment(), RepoRecyclerAdapter.ItemClickListener{
 
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         repoAdapter = RepoRecyclerAdapter(this)
         return inflater.inflate(R.layout.fragment_view_results, container, false)
@@ -56,7 +53,10 @@ class ViewResultsFragment : Fragment(), RepoRecyclerAdapter.ItemClickListener{
 
     override fun onButtonClick(item: Item) {
         GlobalScope.launch(Dispatchers.IO) {
-            val response: Response<ReadmeInfo> = ApiHandler.retrofit.getRepoReadme(item.owner.login, item.name)
+            val response: Response<ReadmeInfo> = ApiHandler.retrofit.getRepoReadme(
+                item.owner.login,
+                item.name
+            )
             if(response.isSuccessful) {
                 val bundle: Bundle = Bundle()
                 bundle.putString("base64content", response.body()!!.content)
@@ -72,8 +72,12 @@ class ViewResultsFragment : Fragment(), RepoRecyclerAdapter.ItemClickListener{
 
     private fun addFragment(readmeDisplayFragment: Fragment){
         val fragmentTransaction: FragmentTransaction =  fragmentManager!!.beginTransaction()
-        fragmentTransaction.replace(R.id.defaultFragment, readmeDisplayFragment)
-        fragmentTransaction.addToBackStack(null);
+        val currentlyShowingFragment = fragmentManager!!.findFragmentByTag("resultFragment")
+        if (currentlyShowingFragment!!.isVisible){
+            fragmentTransaction.replace((view!!.parent as ViewGroup).id, readmeDisplayFragment)
+        }
+
+        fragmentTransaction.addToBackStack("readmeFragment");
         fragmentTransaction.commitAllowingStateLoss()
 
     }

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
 import android.view.Menu
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -73,18 +74,22 @@ class MainActivity: AppCompatActivity(), CoroutineScope{
 
     private fun replaceWithViewResultsFragment(resultsFragment: Fragment){
         val fragmentTransaction: FragmentTransaction =  fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.defaultFragment, resultsFragment)
-        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.defaultFragment, resultsFragment, "resultFragment")
+        fragmentTransaction.addToBackStack("resultFragment");
         fragmentTransaction.commitAllowingStateLoss()
     }
 
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
 
 
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        (menu!!.findItem(R.id.search).actionView as android.widget.SearchView).apply {
+        (menu!!.findItem(R.id.search).actionView as SearchView).apply {
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
         }
 
